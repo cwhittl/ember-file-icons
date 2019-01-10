@@ -1,7 +1,9 @@
 Ember File Icons
 ==============================================================================
 
-Port of the CSS version of https://github.com/Drawbotics/file-icons to be an ember component with some additions.
+A simple library to display icons depending on the file type. 
+
+This is a port of the CSS version of https://github.com/Drawbotics/file-icons to be an ember component with some additions. (thanks!!)
 
 Added responsive CSS (not 100% tested, works for our usage but might need some tweaking).
 Added image-icon, which means if the image is viewable as an image it will use that instead
