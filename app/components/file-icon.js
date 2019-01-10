@@ -1,0 +1,1 @@
+export { default } from 'ember-file-icons/components/file-icon';
