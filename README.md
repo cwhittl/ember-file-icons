@@ -1,5 +1,6 @@
 Ember File Icons
 ==============================================================================
+[![CircleCI](https://circleci.com/gh/cwhittl/ember-file-icons.svg?style=svg)](https://circleci.com/gh/cwhittl/ember-file-icons)
 
 A simple library to display icons depending on the file type. 
 
