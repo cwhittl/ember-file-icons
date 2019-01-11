@@ -19,12 +19,12 @@ ember install ember-file-icons
 Usage
 ------------------------------------------------------------------------------
 Parameters
-url: The url of the file, if no extension it will attempt to pull the domain off the url
-size (small, medium, large, responsive): size
-iconOnly (true/false): just use the file-icon and ignore the image-icon 
-extension (ie 'png'): Forces iconOnly and uses the extension provided
-badExtension (defaults to 'NA'): Displayed when there is an issue parcing the url for the extension.
-maxExtensionSize (defaults to 4): This is the largest size of an extension before it defaults to what's in badExtension.
+* url: The url of the file, if no extension it will attempt to pull the domain off the url
+* size (small, medium, large, responsive): size
+* iconOnly (true/false): just use the file-icon and ignore the image-icon 
+* extension (ie 'png'): Forces iconOnly and uses the extension provided
+* badExtension (defaults to 'NA'): Displayed when there is an issue parcing the url for the extension.
+* maxExtensionSize (defaults to 4): This is the largest size of an extension before it defaults to what's in badExtension.
 
 ```
 {{file-icon url=mediaFile size='responsive'}}
