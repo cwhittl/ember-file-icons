@@ -8,19 +8,23 @@ const ACCEPTABLE_IMAGE_SIZES = ['small', 'medium', 'large', 'responsive'];
 export default Component.extend({
   attributeBindings: ['data-file', 'style'],
   classNameBindings: ['getClassNames'],
-  init(...args) {
-    this._super(...args);
-    if (get(this, 'extension')) {
-      set(this, 'iconOnly', true);
-    }
-  },
   url: null,
   size: null,
   iconOnly: false,
   extension: null,
+  badExtension: 'NA',
+  maxExtensionSize: 4,
   tagName: 'div',
+  init(...args) {
+    this._super(...args);
+    if (get(this, 'extension')) {
+      set(this, 'iconOnly', true);
+    } else {
+      set(this, 'extension', this.getExtensionFromURL(get(this, 'url'), get(this, 'badExtension')));
+    }
+  },
   'data-file': computed('url', function () {
-    const extension = this.getExtension(get(this, 'url'));
+    const extension = get(this, 'extension');
     if (!get(this, 'iconOnly') && VIEWABLE_IMAGE_TYPES.includes(extension)) {
       return null;
     }
@@ -44,20 +48,16 @@ export default Component.extend({
     }
     return ACCEPTABLE_IMAGE_SIZES[0];
   },
-  getExtension(url) {
-    const overrideExt = get(this, 'extension');
-    if (overrideExt) {
-      return overrideExt;
-    }
-    let ext = 'NA';
+  getExtensionFromURL(url, extOnError = null) {
+    let extension = extOnError;
     try {
-      ext = url.split(/#|\?/)[0].split('.').pop().trim().replace(/\//g, '');
+      const parcedExtension = url.split(/#|\?/)[0].split('.').pop().trim().replace(/\//g, '');
+      if (parcedExtension.length > 0 && parcedExtension.length <= get(this, 'maxExtensionSize')) {
+        extension = parcedExtension;
+      }
     } catch (error) {
       // Do Nothing
     }
-    if (ext.length === 0 || ext.length > 4) {
-      ext = 'NA';
-    }
-    return ext;
+    return extension;
   },
 });
